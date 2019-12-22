@@ -8,4 +8,4 @@ services:
     volumes:
       - my_dbdata:/var/lib/postgresql/data
 volumes:
-  my_dbdata:/
+  my_dbdata:
