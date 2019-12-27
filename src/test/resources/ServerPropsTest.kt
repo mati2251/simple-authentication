@@ -28,7 +28,7 @@ class ServerPropsTest {
 
     @Test
     fun `check server properties user is exist`() {
-        Assertions.assertEquals(true, prop["db.user"].toString().isNotEmpty())
+        Assertions.assertEquals(true, prop["user"].toString().isNotEmpty())
     }
 
     @Test
@@ -38,6 +38,12 @@ class ServerPropsTest {
 
     @Test
     fun `check server properties port is exist`() {
-        Assertions.assertEquals(true, prop["db.password"].toString().isNotEmpty())
+        Assertions.assertEquals(true, prop["password"].toString().isNotEmpty())
     }
+
+    @Test
+    fun `check server properties ssl is exist`() {
+        Assertions.assertEquals(true, prop["ssl"].toString().isNotEmpty())
+    }
+
 }
