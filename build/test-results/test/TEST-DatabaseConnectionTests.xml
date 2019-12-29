@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DatabaseConnectionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-29T18:01:25" hostname="manjaro" time="0.118">
+<testsuite name="DatabaseConnectionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-29T19:54:27" hostname="manjaro" time="0.0">
   <properties/>
-  <testcase name="database connection check ()" classname="DatabaseConnectionTests" time="0.118"/>
+  <testcase name="database connection check ()" classname="DatabaseConnectionTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

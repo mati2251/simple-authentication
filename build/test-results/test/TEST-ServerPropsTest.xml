@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ServerPropsTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-12-29T18:01:25" hostname="manjaro" time="0.017">
+<testsuite name="ServerPropsTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-12-29T19:54:27" hostname="manjaro" time="0.009">
   <properties/>
-  <testcase name="check server properties ssl is exist()" classname="ServerPropsTest" time="0.005"/>
+  <testcase name="check server properties ssl is exist()" classname="ServerPropsTest" time="0.001"/>
   <testcase name="check server properties user is exist()" classname="ServerPropsTest" time="0.002"/>
   <testcase name="check server properties url is exist()" classname="ServerPropsTest" time="0.001"/>
   <testcase name="check server properties exist()" classname="ServerPropsTest" time="0.001"/>
   <testcase name="check server properties port is exist()" classname="ServerPropsTest" time="0.001"/>
-  <testcase name="check server properties password is exist()" classname="ServerPropsTest" time="0.003"/>
+  <testcase name="check server properties password is exist()" classname="ServerPropsTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
