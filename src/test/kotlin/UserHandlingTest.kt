@@ -13,7 +13,7 @@ class UserHandlingTest {
 
     @Test
     fun `insert new user to database`(){
-        userHandling.createUser("Test", "Test", "test@test.com", true)
+        userHandling.createUser("Test", "Test", "test@test.com", true, "test")
     }
 
     @Test
