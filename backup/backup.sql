@@ -28,7 +28,9 @@ CREATE TABLE public.users (
     surname character varying NOT NULL,
     name character varying NOT NULL,
     mail character varying NOT NULL,
-    is_admin character varying
+    is_admin boolean,
+    is_active boolean NOT NULL,
+    verification_key character varying NOT NULL
 );
 
 
@@ -38,7 +40,7 @@ ALTER TABLE public.users OWNER TO postgres;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id, surname, name, mail, is_admin) FROM stdin;
+COPY public.users (id, surname, name, mail, is_admin, is_active, verification_key) FROM stdin;
 \.
 
 
