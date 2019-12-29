@@ -15,6 +15,13 @@ class UserHandling {
         }
         val sqlInsert = "INSERT INTO public.users values (${id.toString()}, '${surname}', '${name}', '${mail}', ${isAdmin}, false,'activation code');"
         statement.executeQuery(sqlInsert)
+        statement.close()
     }
 
+    fun deleteUser(id: Int){
+        val statement = DatabaseConnection.connection.createStatement()
+        val sqlDelete = "DELETE FROM public.users WHERE id=${id}"
+        statement.executeQuery(sqlDelete)
+        statement.close()
+    }
 }
