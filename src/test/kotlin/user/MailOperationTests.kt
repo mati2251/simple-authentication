@@ -8,14 +8,15 @@ import java.lang.Exception
 import java.util.*
 
 class MailOperationTests {
+
     @Test
-    fun `send mail`() {
+    fun `send activate mail`(){
         val prop = Properties()
         FileInputStream("src/main/resources/mail.properties").use { input ->
             prop.load(input)
         }
         try {
-            MailOperation.sendActivationMail(prop["testMail"].toString(), "Test", "Test")
+            MailOperation.sendActivationMail(prop["testMail"].toString(), "Test")
         }
         catch (e: Exception){
             fail(e)

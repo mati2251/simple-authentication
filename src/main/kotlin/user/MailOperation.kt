@@ -9,7 +9,7 @@ import javax.mail.internet.MimeMessage
 
 object MailOperation {
 
-    fun sendActivationMail(to: String, title: String, text: String) {
+    private fun sendMail(to: String, title: String, text: String) {
         // You must create in folder resources mail.properties with properties
         val props = Properties()
         FileInputStream("src/main/resources/mail.properties").use { input ->
@@ -33,9 +33,13 @@ object MailOperation {
             message.subject = title
             message.setText(text)
             Transport.send(message)
-            println("Done")
+            println("MAIL SANDED")
         } catch (e: MessagingException) {
             throw e
         }
+    }
+
+    fun sendActivationMail (mail: String, key: String){
+        sendMail(mail,"Activation Mail", "http://localhost:8000/v=${key}")
     }
 }

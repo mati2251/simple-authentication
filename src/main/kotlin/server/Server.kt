@@ -32,21 +32,39 @@ class Server {
                 val charset = Charsets.UTF_8
                 if (newUserData["name"].isNullOrEmpty() || newUserData["surname"].isNullOrEmpty() || newUserData["password"].isNullOrEmpty() || newUserData["mail"].isNullOrEmpty() || newUserData["isAdmin"].isNullOrEmpty()) {
                     val info = "TOO NOT ENOUGH DATA"
-                    httpHandler.sendResponseHeaders(204, info.length.toLong())
+                    httpHandler.sendResponseHeaders(200, info.length.toLong())
                     val os: OutputStream = httpHandler.responseBody
                     os.write(info.toByteArray(charset))
                     os.close()
                 } else {
-                    try{
-                        UserHandling.createUser(name = newUserData["name"].toString(), mail = newUserData["mail"].toString(), surname = newUserData["mail"].toString(), password = newUserData["password"].toString(), isAdmin = newUserData["isAdmin"]?.toBoolean())
+                    try {
+                        UserHandling.createUser(
+                            name = newUserData["name"].toString(),
+                            mail = newUserData["mail"].toString(),
+                            surname = newUserData["mail"].toString(),
+                            password = newUserData["password"].toString(),
+                            isAdmin = newUserData["isAdmin"]?.toBoolean()
+                        )
                         val info = "CREATE USER SUCCESSFUL"
                         httpHandler.sendResponseHeaders(200, info.length.toLong())
                         val os: OutputStream = httpHandler.responseBody
                         os.write(info.toByteArray(charset))
                         os.close()
-                    }
-                    catch (e: Exception){
-
+                    } catch (e: Exception) {
+                        val mess = e.message?.slice(IntRange(0, 20))
+                        if (mess == "ERROR: duplicate key ") {
+                            val info = "MAIL IS EXISTS"
+                            httpHandler.sendResponseHeaders(200, info.length.toLong())
+                            val os: OutputStream = httpHandler.responseBody
+                            os.write(info.toByteArray(charset))
+                            os.close()
+                        } else {
+                            val info = "SERVICE IS UNAVAILABLE"
+                            httpHandler.sendResponseHeaders(503, info.length.toLong())
+                            val os: OutputStream = httpHandler.responseBody
+                            os.write(info.toByteArray(charset))
+                            os.close()
+                        }
                     }
 
                 }
