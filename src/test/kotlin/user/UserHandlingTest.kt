@@ -7,11 +7,10 @@ import java.util.*
 
 class UserHandlingTest {
 
-    private val userHandling = UserHandling();
 
     @Test
     fun `fun how many user exist`(){
-        Assertions.assertEquals(true, userHandling.howManyUsersExist()>=0)
+        Assertions.assertEquals(true, UserHandling.howManyUsersExist()>=0)
     }
 
     @Test
@@ -20,12 +19,12 @@ class UserHandlingTest {
         FileInputStream("src/main/resources/mail.properties").use { input ->
             prop.load(input)
         }
-        userHandling.createUser("Test", "Test", prop["testMail"].toString() , true, "test")
+        UserHandling.createUser("Active your account", "Active link: ", prop["testMail"].toString() , true, "test")
     }
 
     @Test
     fun `delete new user`(){
-        userHandling.deleteUser(userHandling.howManyUsersExist())
+        UserHandling.deleteUser(UserHandling.howManyUsersExist())
     }
 
 }

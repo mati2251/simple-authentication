@@ -2,23 +2,15 @@ package user
 
 import com.google.common.hash.Hashing
 import database.DatabaseConnection
-import java.io.FileInputStream
-import java.lang.Exception
 import java.nio.charset.StandardCharsets
 import java.sql.ResultSet
-import java.util.*
-import javax.mail.Message
-import javax.mail.Session
-import javax.mail.Transport
-import javax.mail.internet.InternetAddress
-import javax.mail.internet.MimeMessage
 
 
-class UserHandling {
+object UserHandling {
 
     private val statement = DatabaseConnection.connection.createStatement()
 
-    fun createUser(name: String, surname: String, mail: String, isAdmin: Boolean, password: String) {
+    fun createUser(name: String, surname: String, mail: String, isAdmin: Boolean?, password: String) {
         val id = howManyUsersExist()
         val hashedPassword = Hashing.sha256().hashString(password, StandardCharsets.UTF_16).toString()
         val activationKey = Hashing.sha256().hashString(mail, StandardCharsets.UTF_16).toString()
