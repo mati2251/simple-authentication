@@ -2,9 +2,15 @@ package user
 
 import com.google.common.hash.Hashing
 import database.DatabaseConnection
+import java.io.FileInputStream
+import java.lang.Exception
 import java.nio.charset.StandardCharsets
 import java.sql.ResultSet
+import java.util.*
+import javax.mail.Message
 import javax.mail.Session
+import javax.mail.Transport
+import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
 
@@ -18,6 +24,7 @@ class UserHandling {
         val activationKey = Hashing.sha256().hashString(mail, StandardCharsets.UTF_16).toString()
         val sqlInsert = "INSERT INTO public.users values (${(id+1)}, '${surname}', '${name}', '${mail}', ${isAdmin}, false,'${activationKey}', '${hashedPassword}');"
         statement.executeUpdate(sqlInsert)
+        MailOperation.sendActivationMail(mail, "Test", "Test")
     }
 
     fun deleteUser(id: Int){
@@ -33,15 +40,5 @@ class UserHandling {
             return howManyColumn.getInt("count")
         }
         return 0
-    }
-
-    fun sendActivationMail (to: String) {
-        val from = "mateusz.karlowski@zoho.com"
-        val properties = System.getProperties()
-        properties.setProperty("mail.smtp.host", "localhost")
-        val session = Session.getDefaultInstance(properties)
-        try{
-            val message = MimeMessage(session)
-        }
     }
 }

@@ -15,34 +15,34 @@ class ServerPropsTest {
     }
 
     @Test
-    fun `check server properties exist`() {
+    fun `server properties exist`() {
         val file = File("src/main/resources/server.properties")
         val exists = file.exists()
         Assertions.assertEquals(true, exists)
     }
 
     @Test
-    fun `check server properties url is exist`() {
+    fun `url prop`() {
         Assertions.assertEquals(true, prop["db.url"].toString().isNotEmpty())
     }
 
     @Test
-    fun `check server properties user is exist`() {
+    fun `user properties`() {
         Assertions.assertEquals(true, prop["user"].toString().isNotEmpty())
     }
 
     @Test
-    fun `check server properties password is exist`() {
+    fun `port properties`() {
         Assertions.assertEquals(true, prop["db.port"].toString().isNotEmpty())
     }
 
     @Test
-    fun `check server properties port is exist`() {
+    fun `password properties`() {
         Assertions.assertEquals(true, prop["password"].toString().isNotEmpty())
     }
 
     @Test
-    fun `check server properties ssl is exist`() {
+    fun `ssl properties`() {
         Assertions.assertEquals(true, prop["ssl"].toString().isNotEmpty())
     }
 
