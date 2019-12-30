@@ -18,6 +18,7 @@ object UserHandling {
         try {
             statement.executeUpdate(sqlInsert)
             MailOperation.sendActivationMail(mail, activationKey)
+            println("USER CREATED")
         }
         catch (exc: Exception){
             throw exc
@@ -25,7 +26,6 @@ object UserHandling {
     }
 
     fun deleteUser(id: Int){
-        val statement = DatabaseConnection.connection.createStatement()
         val sqlDelete = "DELETE FROM public.users WHERE id=${id}"
         statement.executeUpdate(sqlDelete)
     }
@@ -37,5 +37,11 @@ object UserHandling {
             return howManyColumn.getInt("count")
         }
         return 0
+    }
+
+    fun activateUser(key: String){
+        val sqlUpdate = "UPDATE public.users SET is_active=true WHERE verification_key = '$key'"
+        statement.executeUpdate(sqlUpdate)
+        println("USER ACTIVATED")
     }
 }

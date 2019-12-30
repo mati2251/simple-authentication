@@ -40,6 +40,6 @@ object MailOperation {
     }
 
     fun sendActivationMail (mail: String, key: String){
-        sendMail(mail,"Activation Mail", "http://localhost:8000/v=${key}")
+        sendMail(mail,"Activation Mail", "http://localhost:8000/verification?key=${key}")
     }
 }
