@@ -16,6 +16,7 @@ class CreateUserHandler : HttpHandler {
                 val tmp = it.split("=")
                 newUserData[tmp[0]] = tmp[1]
             }
+            println(newUserData)
             val charset = Charsets.UTF_8
             if (newUserData["name"].isNullOrEmpty() || newUserData["surname"].isNullOrEmpty() || newUserData["password"].isNullOrEmpty() || newUserData["mail"].isNullOrEmpty() || newUserData["isAdmin"].isNullOrEmpty()) {
                 val info = "TOO NOT ENOUGH DATA"
@@ -28,7 +29,7 @@ class CreateUserHandler : HttpHandler {
                     UserHandling.createUser(
                         name = newUserData["name"].toString(),
                         mail = newUserData["mail"].toString(),
-                        surname = newUserData["mail"].toString(),
+                        surname = newUserData["surname"].toString(),
                         password = newUserData["password"].toString(),
                         isAdmin = newUserData["isAdmin"]?.toBoolean()
                     )
@@ -51,6 +52,7 @@ class CreateUserHandler : HttpHandler {
                         val os: OutputStream = httpHandler.responseBody
                         os.write(info.toByteArray(charset))
                         os.close()
+                        throw e
                     }
                 }
 

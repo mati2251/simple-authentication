@@ -44,4 +44,9 @@ object UserHandling {
         statement.executeUpdate(sqlUpdate)
         println("USER ACTIVATED")
     }
+
+    fun getUserDetails(mail: String) : ResultSet{
+        val sqlSelect = "SELECT * from public.users WHERE mail = '$mail';"
+        return statement.executeQuery(sqlSelect)
+    }
 }
