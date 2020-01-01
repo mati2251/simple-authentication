@@ -1,11 +1,6 @@
 package server
 
-import com.sun.net.httpserver.HttpExchange
-import com.sun.net.httpserver.HttpHandler
 import com.sun.net.httpserver.HttpServer
-import user.UserHandling
-import java.io.OutputStream
-import java.lang.Exception
 import java.net.InetSocketAddress
 
 
@@ -16,6 +11,7 @@ class Server {
     init {
         server.createContext("/createUser", CreateUserHandler())
         server.createContext("/verification", ActivateUserHandler())
+        server.createContext("/login", LoginUserHandler())
         println("SERVER STARTED")
         server.start()
     }
