@@ -25,6 +25,11 @@ object UserHandling {
         }
     }
 
+    fun deleteUser(mail: String){
+        val sqlDelete = "DELETE FROM public.users WHERE mail=${mail}"
+        statement.executeUpdate(sqlDelete)
+    }
+
     fun deleteUser(id: Int){
         val sqlDelete = "DELETE FROM public.users WHERE id=${id}"
         statement.executeUpdate(sqlDelete)

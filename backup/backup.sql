@@ -42,7 +42,6 @@ ALTER TABLE public.users OWNER TO postgres;
 --
 
 COPY public.users (id, surname, name, mail, is_admin, is_active, verification_key, password) FROM stdin;
-1	Test	Test	mati2251@outlook.com	t	f	7eaeb2cf5e236b56914335ebe5fa50fa706b4f4ff4caf2703f5ee28cc041f36c	2bfdcf81f1bdd146deccc052229d5e30945b2a806901ca15026dde30c8a88b55
 \.
 
 
@@ -52,6 +51,13 @@ COPY public.users (id, surname, name, mail, is_admin, is_active, verification_ke
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pk PRIMARY KEY (id);
+
+
+--
+-- Name: users_mail_uindex; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX users_mail_uindex ON public.users USING btree (mail);
 
 
 --

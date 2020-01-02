@@ -1,6 +1,9 @@
 package server
 
 import com.sun.net.httpserver.HttpServer
+import user.ActivateUserHandler
+import user.CreateUserHandler
+import user.LoginUserHandler
 import java.net.InetSocketAddress
 
 

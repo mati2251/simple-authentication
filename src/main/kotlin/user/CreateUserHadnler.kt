@@ -1,8 +1,7 @@
-package server
+package user
 
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpHandler
-import user.UserHandling
 import java.io.OutputStream
 import java.lang.Exception
 
