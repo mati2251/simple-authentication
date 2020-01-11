@@ -32,6 +32,7 @@ class LoginUserHandler : HttpHandler {
                     os.write(info.toByteArray(charset))
                     os.close()
                 } else if (!userData["password"].isNullOrEmpty() && result.getBoolean("is_active")) {
+                    println(result.getBoolean("is_active"));
                     val password = Hashing.sha256().hashString(userData["password"], StandardCharsets.UTF_16).toString()
                     if (result.getString("password") == password) {
                         val info = "SUCCESS?"
