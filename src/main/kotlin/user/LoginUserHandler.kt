@@ -3,6 +3,7 @@ package user
 import com.google.common.hash.Hashing
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpHandler
+import session.Session
 import java.io.OutputStream
 import java.nio.charset.StandardCharsets
 
@@ -35,7 +36,8 @@ class LoginUserHandler : HttpHandler {
                     println(result.getBoolean("is_active"));
                     val password = Hashing.sha256().hashString(userData["password"], StandardCharsets.UTF_16).toString()
                     if (result.getString("password") == password) {
-                        val info = "SUCCESS?"
+                        val session: Session = Session(result.getInt("id"))
+                        val info = "SUCCESS?${session.sessionId}"
                         httpHandler.sendResponseHeaders(200, info.length.toLong())
                         val os: OutputStream = httpHandler.responseBody
                         os.write(info.toByteArray(charset))
