@@ -1,5 +1,5 @@
 # Simple Authentication System
-This is simple project. The goal of project is learn and practice code in kotlin without framework.
+This is simple project contain auth system base on cookies. The goal of project is learn and practice code in kotlin without framework.
 ## Start server
 To start database start <br/>
 ``docker-compose up`` <br/>
