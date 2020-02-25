@@ -6,7 +6,6 @@ import user.CreateUserHandler
 import user.LoginUserHandler
 import java.net.InetSocketAddress
 
-
 class Server {
 
     private val server: HttpServer = HttpServer.create(InetSocketAddress(8000), 0)

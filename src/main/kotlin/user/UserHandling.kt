@@ -54,4 +54,9 @@ object UserHandling {
         val sqlSelect = "SELECT * from public.users WHERE mail = '$mail';"
         return statement.executeQuery(sqlSelect)
     }
+
+    fun getUserDetails(userId: Int) : ResultSet{
+        val sqlSelect = "SELECT * from public.users WHERE id = '$userId';"
+        return statement.executeQuery(sqlSelect)
+    }
 }
